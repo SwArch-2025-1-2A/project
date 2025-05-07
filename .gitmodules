@@ -1,3 +1,6 @@
 [submodule "frontend"]
 	path = frontend
 	url = git@github.com:SwArch-2025-1-2A/frontend.git
+[submodule "backend"]
+	path = backend
+	url = git@github.com:SwArch-2025-1-2A/backend.git
