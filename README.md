@@ -1,6 +1,6 @@
 # MeetUN
 
-![logo MeetUN](frontend/public/assets/meetUN.svg "MeetUN")
+![Logo MeetUN](docs/meetUN.svg "MeetUN")
 
 ## Setup
 
