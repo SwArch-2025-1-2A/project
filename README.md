@@ -30,6 +30,14 @@ git config --global push.recurseSubmodules on-demand
 git config --global submodule.recurse true
 ```
 
+> [!NOTE]
+> Once you have excecuted these commands every time you `pull`/`fetch` changes
+your modules will get updated. So if you move between branches you can just
+`git pull` and you're good to go.
+
+In case you want to manually update your submodules. Please refer to
+[updating submodules](#updating-submodules).
+
 #### Updating submodules
 
 Once you have read about [git submodules](#git-submodules), you can understand
