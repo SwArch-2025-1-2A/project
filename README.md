@@ -57,3 +57,22 @@ remote-tracking branch:
     ```sh
     git submodule update --init --recursive --remote
     ```
+
+## Running the project
+
+### Running with Docker Compose
+
+Make sure the submodules are [up-to-date](#updating-submodules) to avoid
+possible issues with stale state.
+
+#### Build the project and run it
+
+```sh
+docker compose up --build
+```
+
+#### Run the project without building
+
+```sh
+docker compose up
+```
