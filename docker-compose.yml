@@ -1,7 +1,10 @@
+# Remember to check the `override` file
+
 include:
   # Main API
   - path: backend/docker-compose.yml
     project_directory: backend/
+
   # Auth MS
   - path: auth/docker-compose.yml
     project_directory: auth/
