@@ -24,6 +24,31 @@ frontend-1  |  ✓ Ready in 1169ms
 
 ![Previsualization of frontend UI](docs/frontend-layout.png "MeetUN Frontend")
 
+### Authentication service
+
+> [!WARNING]
+> This API may not be accessible from your local machines in future
+> releases since it will be behind a internal network
+
+This service will be accesible under the port
+[`:5000`](http://localhost:5000/). And once it's ready the logs will
+show something in the lines of (not exactly it):
+
+```log
+auth-api-1  | All required environment variables are set.
+            ·
+            ·
+            ·
+auth-api-1  | All migrations have been successfully applied.
+auth-api-1  | 
+auth-api-1  | > auth_microservice@1.0.0 start
+auth-api-1  | > node dist/index.js
+auth-api-1  | 
+auth-api-1  | Listening: http://localhost:5000
+```
+
+![Response in JSON from auth service](docs/healthcheck-auth-api.png "MeetUN Auth service")
+
 ### GraphQL service
 
 > [!WARNING]
