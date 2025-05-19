@@ -2,7 +2,9 @@ include:
   # Main API
   - path: backend/docker-compose.yml
     project_directory: backend/
-  # TODO: Auth MS
+  # Auth MS
+  - path: auth/docker-compose.yml
+    project_directory: auth/
 
 services:
   frontend:
