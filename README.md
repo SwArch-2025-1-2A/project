@@ -24,6 +24,27 @@ frontend-1  |  ✓ Ready in 1169ms
 
 ![Previsualization of frontend UI](docs/frontend-layout.png "MeetUN Frontend")
 
+### GraphQL service
+
+> [!WARNING]
+> This API may not be accessible from your local machines in future
+> releases since it will be behind a internal network
+
+This service will be accesible under the port
+[`:8008`](http://localhost:8008/). And once it's ready the logs will
+show something in the lines of (not exactly it):
+
+```log
+main-api-1  | Waiting for the database to be ready...
+main-api-1  | Running migrations...
+            ·
+            ·
+            ·
+main-api-1  | [[[MAIN API]]] Running the API now!
+```
+
+![Previsualization of the GraphQL Playground](docs/graph-playground.png "MeetUN GraphQL Playground")
+
 ## Setup
 
 Clone this repository adding the `--recurse-submodules` flag, e.g:
