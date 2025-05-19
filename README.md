@@ -2,6 +2,28 @@
 
 ![Logo MeetUN](docs/meetUN.svg "MeetUN")
 
+## Services available once deployed
+
+### Frontend
+
+This service will be accesible under the port
+[`:80`](http://localhost/). And once it's ready the logs will show
+something in the lines of (not exactly it):
+
+```log
+frontend-1  | > meetun_front@0.1.0 start
+frontend-1  | > next start
+frontend-1  | 
+frontend-1  |    ▲ Next.js 15.3.2
+frontend-1  |    - Local:        http://localhost:3000
+frontend-1  |    - Network:      http://172.20.0.6:3000
+frontend-1  | 
+frontend-1  |  ✓ Starting...
+frontend-1  |  ✓ Ready in 1169ms
+```
+
+![Previsualization of frontend UI](docs/frontend-layout.png "MeetUN Frontend")
+
 ## Setup
 
 Clone this repository adding the `--recurse-submodules` flag, e.g:
