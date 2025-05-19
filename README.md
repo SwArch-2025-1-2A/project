@@ -2,6 +2,26 @@
 
 ![Logo MeetUN](docs/meetUN.svg "MeetUN")
 
+---
+
+## Table of contents
+
+- [MeetUN](#meetun)
+  - [Table of contents](#table-of-contents)
+  - [Services available once deployed](#services-available-once-deployed)
+    - [Frontend](#frontend)
+    - [Authentication service](#authentication-service)
+    - [GraphQL service](#graphql-service)
+  - [Setup](#setup)
+    - [Git submodules](#git-submodules)
+      - [Updating submodules](#updating-submodules)
+  - [Running the project](#running-the-project)
+    - [Running with Docker Compose](#running-with-docker-compose)
+      - [Build the project and run it](#build-the-project-and-run-it)
+      - [Run the project without building](#run-the-project-without-building)
+
+---
+
 ## Services available once deployed
 
 ### Frontend
