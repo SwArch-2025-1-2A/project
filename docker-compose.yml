@@ -11,7 +11,12 @@ include:
 
 services:
   mu_fe:
-    build: ./frontend
+    build: 
+      context: ./frontend
+      args:
+        mode: prod
+    environment:
+      GRAPHQL_API: http://${mu_main_be_HOSTNAME:-localhost}:${mu_main_be_INTERNAL_PORT:-8008}/query
     ports:
       - "80:3000"
     depends_on:
