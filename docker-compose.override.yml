@@ -1,4 +1,4 @@
 services:
   mu_main_be:
     depends_on:
-      - auth-api
+      - mu_auth_ms
