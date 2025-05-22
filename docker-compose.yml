@@ -9,15 +9,6 @@ include:
   - path: auth/docker-compose.yml
     project_directory: auth/
 
-services:
-  mu_fe:
-    build: 
-      context: ./frontend
-      args:
-        mode: prod
-    environment:
-      GRAPHQL_API: http://${mu_main_be_HOSTNAME:-localhost}:${mu_main_be_INTERNAL_PORT:-8008}/query
-    ports:
-      - "80:3000"
-    depends_on:
-      - mu_main_be
+  # Frontend
+  - path: frontend/docker-compose.yml
+    project_directory: frontend/
