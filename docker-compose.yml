@@ -1,9 +1,9 @@
 # Remember to check the `override` file
 
 include:
-  # Main API
-  - path: backend/docker-compose.yml
-    project_directory: backend/
+  # Frontend
+  - path: frontend/docker-compose.yml
+    project_directory: frontend/
 
   # API Gateway
   - path: api_gateway/docker-compose.yml
