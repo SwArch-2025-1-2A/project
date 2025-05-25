@@ -1,8 +1,4 @@
 services:
-  mu_main_be:
-    depends_on:
-      - mu_auth_ms
-
   mu_fe:
     depends_on:
-      - mu_main_be
+      - mu_ag

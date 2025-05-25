@@ -5,10 +5,6 @@ include:
   - path: backend/docker-compose.yml
     project_directory: backend/
 
-  # Auth MS
-  - path: auth/docker-compose.yml
-    project_directory: auth/
-
-  # Frontend
-  - path: frontend/docker-compose.yml
-    project_directory: frontend/
+  # API Gateway
+  - path: api_gateway/docker-compose.yml
+    project_directory: api_gateway/
