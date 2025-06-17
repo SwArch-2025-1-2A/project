@@ -4,3 +4,6 @@
 [submodule "api_gateway"]
 	path = api_gateway
 	url = git@github.com:SwArch-2025-1-2A/api_gateway.git
+[submodule "mu_fe_superuser"]
+	path = mu_fe_superuser
+	url = git@github.com:SwArch-2025-1-2A/mu_fe_superuser.git
