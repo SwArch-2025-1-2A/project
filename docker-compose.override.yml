@@ -2,3 +2,7 @@ services:
   mu_fe:
     depends_on:
       - mu_ag
+
+  mu_fe_de:
+    depends_on:
+      - mu_ag

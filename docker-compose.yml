@@ -8,3 +8,7 @@ include:
   # API Gateway
   - path: api_gateway/docker-compose.yml
     project_directory: api_gateway/
+
+  # Frontend Superuser
+  - path: mu_fe_superuser/docker-compose.yml
+    project_directory: mu_fe_superuser/
