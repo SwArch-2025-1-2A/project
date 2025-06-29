@@ -12,3 +12,13 @@ include:
   # Frontend Superuser
   - path: mu_fe_superuser/docker-compose.yml
     project_directory: mu_fe_superuser/
+
+services:
+  nginx-proxy:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - mu_fe
