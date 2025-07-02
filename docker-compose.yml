@@ -22,3 +22,13 @@ services:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
     depends_on:
       - mu_fe
+    networks:
+      - public
+      - private
+    profiles: ["prod"]
+
+networks:
+  public:
+    driver: bridge
+  private:
+    driver: bridge
