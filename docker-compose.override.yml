@@ -1,8 +1,22 @@
 services:
-  mu_fe:
+  mu_fe1:
+    depends_on:
+      - mu_ag
+
+  mu_fe2:
+    depends_on:
+      - mu_ag
+
+  mu_fe3:
     depends_on:
       - mu_ag
 
   mu_fe_de:
     depends_on:
       - mu_ag
+
+  nginx-proxy:
+    depends_on:
+      - mu_fe1
+      - mu_fe2
+      - mu_fe3
