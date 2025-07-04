@@ -13,9 +13,10 @@
       - [Updating submodules](#updating-submodules)
   - [Running the project](#running-the-project)
     - [Running with Docker Compose](#running-with-docker-compose)
+      - [Setting up the needed environment variables](#setting-up-the-needed-environment-variables)
       - [Build the project and run it](#build-the-project-and-run-it)
       - [Run the project without building](#run-the-project-without-building)
-      - [Partially clean the environment](#partially-clean-enviroment)
+      - [Partially clean enviroment](#partially-clean-enviroment)
       - [Fully clean environment](#fully-clean-environment)
 
 ---
@@ -96,13 +97,17 @@ cp .env.example .env
 #### Build the project and run it
 
 ```sh
-docker compose up --build
+docker compose --profile prod up --build
 ```
+
+> [!IMPORTANT]
+> Make sure to include the flag --profile prod, as it is needed for
+> various services, which run in prod mode when running the whole project.
 
 #### Run the project without building
 
 ```sh
-docker compose up
+docker compose --profile prod up
 ```
 
 #### Partially clean enviroment
@@ -112,7 +117,7 @@ docker compose up
 > and remove containers, networks by running:
 
 ```sh
-docker compose down --remove-orphans
+docker compose --profile prod down --remove-orphans
 ```
 
 #### Fully clean environment
@@ -123,4 +128,4 @@ docker compose down --remove-orphans
 > removed as well.
 
 ```sh
-docker compose down --remove-orphans --volumes
+docker compose --profile prod down --remove-orphans --volumes
