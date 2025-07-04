@@ -71,10 +71,10 @@ services:
       - private
 
   nginx-proxy:
-    # depends_on:
-    #   - mu_fe1
-    #   - mu_fe2
-    #   - mu_fe3
+    depends_on:
+      - mu_fe1
+      - mu_fe2
+      - mu_fe3
     networks:
       - public
       - private
