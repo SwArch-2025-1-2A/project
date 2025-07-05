@@ -104,11 +104,68 @@ docker compose --profile prod up --build
 > Make sure to include the flag --profile prod, as it is needed for
 > various services, which run in prod mode when running the whole project.
 
+> [!NOTE]
+> This won't run the desktop client. To do that [read the instructions for it](#running-the-desktop-client)
+
+#### Running the desktop client
+These steps worked in Ubuntu. There are no guarantees that it will work on other Linux distributions or even the WSL.
+
+The desktop client requires the rest of the project to be [built and running in docker containers](#build-the-project-and-run-it)
+
+First, you need to install the self-signed certificate of the desktop reverse proxy on your system, otherwise any calls made by the
+desktop client will fail because it will notice that the certificate is self-signed and it won't trust it. You can do the 
+installation by running:
+
+```sh
+sudo cp /path/to/mu_desktop_rp/certs/certificado.crt /usr/local/share/ca-certificates/
+sudo update-ca-certificates
+```
+
+Now go to the directory of the `mu_fe_superuser` module and start the Next.js server. If you haven't build it yet,
+make sure to do so with
+
+```sh
+npm install
+npm run build
+```
+
+After making sure that the package is built, run the Next.js server with the following command and environmental variables
+
+```sh
+GRAPHQL_API="https://localhost:4000/query" NODE_OPTIONS=--use-openssl-ca npm run dev
+```
+
+> [!NOTE]
+> Right now the project doesn't support other ports for the GRAPHQL_API, so leave that environmental variable as is
+
+Once the Next.js server is already running, you can start the electron app with the command
+
+```sh
+npx electron --no-sandbox --ozone-platform=wayland main.cjs
+```
+
+If your Linux distribution doesn't use Wayland (look it up), then try to run the command like this
+
+```sh
+npx electron --no-sandbox main.cjs
+```
+
+To enter the admin panel, you can open the Dev Tools (by clicking View and then Toggle Developer Tools or pressing CTRL+Shift+I)
+in the desktop client and type the following command in the console
+
+```js
+window.location.href="http://localhost:3000/grupos"
+```
+
+There you can send tasks to the bulk microservice and then retrieve the results using the task_id that you got
+
 #### Run the project without building
 
 ```sh
 docker compose --profile prod up
 ```
+
+
 
 #### Partially clean enviroment
 
