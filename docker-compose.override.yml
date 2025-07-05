@@ -1,17 +1,17 @@
 services:
-  mu_fe1:
+  mu_fe_prod1:
     depends_on:
       - mu_ag
     networks:
       - private
 
-  mu_fe2:
+  mu_fe_prod2:    
     depends_on:
       - mu_ag
     networks:
       - private
 
-  mu_fe3:
+  mu_fe_prod3:
     depends_on:
       - mu_ag
     networks:
@@ -23,29 +23,45 @@ services:
     networks:
       - private
 
-  mu_ag:
+  mu_ag:    
     networks:
       - private
 
+  # USERS MICROSERVICE
   mu_users_ms:
     networks:
       - private
   mu_users_db:
     networks:
       - private
+
+  # GROUPS MICROSERVICE
   mu_groups_ms:
     networks:
       - private
   mu_groups_db:
     networks:
       - private
+
+  # CATEGORIES MICROSERVICE
   mu_categories_ms:
     networks:
       - private
   mu_categories_db:
     networks:
       - private
+
+  # EVENTS MICROSERVICE
+  mu_events_ms:
+    networks:
+      - private
+  mu_events_db:
+    networks:
+      - private
+
+  # AUTH MICROSERVICE
   mu_auth_ms:
+    ports: []
     networks:
       - private
   mu_auth_db:
@@ -54,6 +70,8 @@ services:
   mu_whitelist_db:
     networks:
       - private
+
+  # BULK MICROSERVICE
   mu_bulk_rb:
     networks:
       - private
@@ -66,15 +84,18 @@ services:
   mu_bulk_wkr:
     networks:
       - private
+
+  # TODO: this service shouldn't be run in production
   mu_bulk_dashboard:
     networks:
       - private
 
+  # TODO: there should be two profiles for this service, one that depends on a single frontend (dev) and this one (prod)
   nginx-proxy:
     depends_on:
-      - mu_fe1
-      - mu_fe2
-      - mu_fe3
+      - mu_fe_prod1
+      - mu_fe_prod2
+      - mu_fe_prod3
     networks:
       - public
       - private
