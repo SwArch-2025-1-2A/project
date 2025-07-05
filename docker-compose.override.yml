@@ -1,94 +1,101 @@
 services:
   mu_fe_prod1:
     depends_on:
-      - mu_ag
+      - mu_ag_prod
     networks:
-      - private
+      - front_web_net
 
   mu_fe_prod2:    
     depends_on:
-      - mu_ag
+      - mu_ag_prod
     networks:
-      - private
+      - front_web_net
 
   mu_fe_prod3:
     depends_on:
-      - mu_ag
+      - mu_ag_prod
     networks:
-      - private
+      - front_web_net
 
   mu_fe_de:
     depends_on:
-      - mu_ag
+      - mu_ag_prod
     networks:
-      - private
+      - front_desktop_net
 
-  mu_ag:    
+  mu_ag_prod:    
     networks:
-      - private
+      - front_web_net
+      - front_desktop_net # TODO: the API Gateway should connect to the reverse proxy for the desktop, not the desktop client itself
+      - mu_users_ms_net
+      - mu_groups_ms_net
+      - mu_events_ms_net
+      - mu_auth_ms_net
+      - mu_bulk_ms_net
+      - mu_categories_ms_net
 
   # USERS MICROSERVICE
-  mu_users_ms:
+  mu_users_ms_prod:
     networks:
-      - private
-  mu_users_db:
+      - mu_users_ms_net
+      - mu_users_db_net
+  mu_users_db_prod:
     networks:
-      - private
+      - mu_users_db_net
 
   # GROUPS MICROSERVICE
-  mu_groups_ms:
+  mu_groups_ms_prod:
     networks:
-      - private
-  mu_groups_db:
+      - mu_groups_ms_net
+      - mu_groups_db_net
+  mu_groups_db_prod:
     networks:
-      - private
+      - mu_groups_db_net
 
   # CATEGORIES MICROSERVICE
-  mu_categories_ms:
+  mu_categories_ms_prod:
     networks:
-      - private
-  mu_categories_db:
+      - mu_categories_ms_net
+      - mu_categories_db_net
+  mu_categories_db_prod:
     networks:
-      - private
+      - mu_categories_db_net
 
   # EVENTS MICROSERVICE
-  mu_events_ms:
+  mu_events_ms_prod:
     networks:
-      - private
-  mu_events_db:
+      - mu_events_ms_net
+      - mu_events_db_net
+  mu_events_db_prod:
     networks:
-      - private
+      - mu_events_db_net
 
   # AUTH MICROSERVICE
-  mu_auth_ms:
-    ports: []
+  mu_auth_ms_prod:
     networks:
-      - private
-  mu_auth_db:
+      - mu_auth_ms_net
+      - mu_auth_db_net
+      - mu_whitelist_db_net
+  mu_auth_db_prod:
     networks:
-      - private
-  mu_whitelist_db:
+      - mu_auth_db_net
+  mu_whitelist_db_prod:
     networks:
-      - private
+      - mu_whitelist_db_net
 
   # BULK MICROSERVICE
-  mu_bulk_rb:
+  mu_bulk_rb_prod:
     networks:
-      - private
-  mu_bulk_bkr:
+      - mu_bulk_ms_net
+  mu_bulk_bkr_prod:
     networks:
-      - private
-  mu_bulk_ms:
+      - mu_bulk_ms_net
+  mu_bulk_ms_prod:
     networks:
-      - private
-  mu_bulk_wkr:
+      - mu_bulk_ms_net
+  mu_bulk_wkr_prod:
     networks:
-      - private
-
-  # TODO: this service shouldn't be run in production
-  mu_bulk_dashboard:
-    networks:
-      - private
+      - mu_bulk_ms_net
 
   # TODO: there should be two profiles for this service, one that depends on a single frontend (dev) and this one (prod)
   nginx-proxy:
@@ -98,4 +105,21 @@ services:
       - mu_fe_prod3
     networks:
       - public
-      - private
+      - front_web_net
+
+networks:
+  public:
+  front_web_net:
+  front_desktop_net:
+  mu_users_ms_net:
+  mu_groups_ms_net:
+  mu_events_ms_net:
+  mu_auth_ms_net:
+  mu_bulk_ms_net:
+  mu_categories_ms_net:
+  mu_users_db_net:
+  mu_groups_db_net:
+  mu_events_db_net:
+  mu_auth_db_net:
+  mu_whitelist_db_net:
+  mu_categories_db_net:
