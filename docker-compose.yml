@@ -9,9 +9,10 @@ include:
   - path: api_gateway/docker-compose.yml
     project_directory: api_gateway/
 
+  # You should run the electron app directly instead of trying to run it in a container
   # Frontend Superuser
-  - path: mu_fe_superuser/docker-compose.yml
-    project_directory: mu_fe_superuser/
+  #- path: mu_fe_superuser/docker-compose.yml
+  #  project_directory: mu_fe_superuser/
 
 services:
   mu_web_rp:
