@@ -17,16 +17,10 @@ services:
     networks:
       - front_web_net
 
-  mu_fe_de:
-    depends_on:
-      - mu_ag_prod
-    networks:
-      - front_desktop_net
-
   mu_ag_prod:    
     networks:
       - front_web_net
-      - front_desktop_net # TODO: the API Gateway should connect to the reverse proxy for the desktop, not the desktop client itself
+      - mu_desktop_rp_net
       - mu_users_ms_net
       - mu_groups_ms_net
       - mu_events_ms_net
@@ -107,10 +101,17 @@ services:
       - public
       - front_web_net
 
+  mu_desktop_rp:
+    depends_on:
+      - mu_ag_prod
+    networks:
+      - public
+      - mu_desktop_rp_net # Used to connect to the API Gateway
+
 networks:
   public:
+  mu_desktop_rp_net:
   front_web_net:
-  front_desktop_net:
   mu_users_ms_net:
   mu_groups_ms_net:
   mu_events_ms_net:

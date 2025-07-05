@@ -26,3 +26,15 @@ services:
       - ./mu_web_rp/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./mu_web_rp/certs/certificado.crt:/etc/nginx/certs/certificado.crt:ro
       - ./mu_web_rp/certs/clave.key:/etc/nginx/certs/clave.key:ro
+
+  mu_desktop_rp:
+    image: nginx:latest
+    hostname: mu_desktop_rp
+    container_name: mu_desktop_rp
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./mu_desktop_rp/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./mu_desktop_rp/certs/certificado.crt:/etc/nginx/certs/certificado.crt:ro
+      - ./mu_desktop_rp/certs/clave.key:/etc/nginx/certs/clave.key:ro
+
