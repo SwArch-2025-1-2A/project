@@ -1,8 +1,80 @@
 services:
-  mu_fe:
+  mu_fe1:
     depends_on:
       - mu_ag
+    networks:
+      - private
+
+  mu_fe2:
+    depends_on:
+      - mu_ag
+    networks:
+      - private
+
+  mu_fe3:
+    depends_on:
+      - mu_ag
+    networks:
+      - private
 
   mu_fe_de:
     depends_on:
       - mu_ag
+    networks:
+      - private
+
+  mu_ag:
+    networks:
+      - private
+
+  mu_users_ms:
+    networks:
+      - private
+  mu_users_db:
+    networks:
+      - private
+  mu_groups_ms:
+    networks:
+      - private
+  mu_groups_db:
+    networks:
+      - private
+  mu_categories_ms:
+    networks:
+      - private
+  mu_categories_db:
+    networks:
+      - private
+  mu_auth_ms:
+    networks:
+      - private
+  mu_auth_db:
+    networks:
+      - private
+  mu_whitelist_db:
+    networks:
+      - private
+  mu_bulk_rb:
+    networks:
+      - private
+  mu_bulk_bkr:
+    networks:
+      - private
+  mu_bulk_ms:
+    networks:
+      - private
+  mu_bulk_wkr:
+    networks:
+      - private
+  mu_bulk_dashboard:
+    networks:
+      - private
+
+  nginx-proxy:
+    depends_on:
+      - mu_fe1
+      - mu_fe2
+      - mu_fe3
+    networks:
+      - public
+      - private
