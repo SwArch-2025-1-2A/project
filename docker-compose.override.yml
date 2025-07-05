@@ -98,7 +98,7 @@ services:
       - mu_bulk_ms_net
 
   # TODO: there should be two profiles for this service, one that depends on a single frontend (dev) and this one (prod)
-  nginx-proxy:
+  mu_web_rp:
     depends_on:
       - mu_fe_prod1
       - mu_fe_prod2
