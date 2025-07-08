@@ -15,6 +15,7 @@
     - [Running with Docker Compose](#running-with-docker-compose)
       - [Setting up the needed environment variables](#setting-up-the-needed-environment-variables)
       - [Build the project and run it](#build-the-project-and-run-it)
+      - [Running the desktop client](#running-the-desktop-client)
       - [Run the project without building](#run-the-project-without-building)
       - [Partially clean enviroment](#partially-clean-enviroment)
       - [Fully clean environment](#fully-clean-environment)
@@ -108,9 +109,24 @@ docker compose --profile prod up --build
 > This won't run the desktop client. To do that [read the instructions for it](#running-the-desktop-client)
 
 #### Running the desktop client
+
 These steps worked in Ubuntu. There are no guarantees that it will work on other Linux distributions or even the WSL.
 
 The desktop client requires the rest of the project to be [built and running in docker containers](#build-the-project-and-run-it)
+
+If you don't want to manually do all this steps, please, grant permissions to execute this script:
+
+```sh
+chmod +x run_desktop_fe.sh
+```
+
+Then execute it.
+
+```sh
+./run_desktop_fe.sh
+```
+
+Otherwise, proceed with the following steps one by one:
 
 First, you need to install the self-signed certificate of the desktop reverse proxy on your system, otherwise any calls made by the
 desktop client will fail because it will notice that the certificate is self-signed and it won't trust it. You can do the 
